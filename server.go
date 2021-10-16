@@ -1,4 +1,4 @@
-package frontend
+package main
 
 import (
 	"log"
@@ -7,22 +7,22 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type FrontendServer struct {
+type Server struct {
 	http.Server
 }
 
 
-func New_FrontendServer() (*FrontendServer) {
-	fs := &FrontendServer{}
+func New_Server() (*Server) {
+	s := &Server{}
 
 	// build router
 	router := mux.NewRouter().StrictSlash(true)
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./frontend/")))
-	fs.Handler = router
+	s.Handler = router
 
-	return fs
+	return s
 }
 
-func (fs *FrontendServer) Start() {
-	log.Fatal(fs.ListenAndServe())
+func (s *Server) Start() {
+	log.Fatal(s.ListenAndServe())
 }
