@@ -18,7 +18,7 @@ func New_Server() (*Server) {
 
 	// build router
 	router := mux.NewRouter().StrictSlash(true)
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./frontend/")))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./")))
 	s.Handler = router
 
 	port := os.Getenv("PORT")
