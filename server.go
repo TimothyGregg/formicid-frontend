@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
@@ -19,6 +20,9 @@ func New_Server() (*Server) {
 	router := mux.NewRouter().StrictSlash(true)
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./frontend/")))
 	s.Handler = router
+
+	port := os.Getenv("PORT")
+	s.Addr = ":" + port
 
 	return s
 }
