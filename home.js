@@ -4,12 +4,12 @@
 
 window.onload = init;
 
-const endpoint = "api.formicid.io"
+const endpoint = "http://api.formicid.io"
 
 function init(){
   // the code to be called when the dom has loaded
   // #document has its nodes
-  document.getElementById("addGame").addEventListener("click", addGame(100, 100))
+  document.getElementById("addGame").addEventListener("click", addGame)
 }
 
 function post(relative_url, body) {
@@ -23,14 +23,14 @@ function post(relative_url, body) {
   fetch(endpoint + relative_url, options)
 }
 
-function addGame(size_x, size_y) {
-  var addGameOptions = {
+function addGame() {
+  var addGameBody = {
     action_type: 1,
     action_name: 'addGame',
     details: {
-      size_x: size_x,
-      size_y: size_y
+      size_x: 100,
+      size_y: 100
     }
   }
-  post("/", addGameOptions)
+  post("/", addGameBody)
 }
