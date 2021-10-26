@@ -32,5 +32,5 @@ function addGame() {
       size_y: 100
     }
   }
-  post("/g/", addGameBody)
+  post("/g", addGameBody)
 }
