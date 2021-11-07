@@ -16,6 +16,7 @@ function post(relative_url, body) {
   var options = {
     method: 'POST',
     headers: {
+      'Access-Control-Allow-Origin': "*",
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: body
