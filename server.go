@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/TimothyGregg/formicid/web/util"
 	"github.com/gorilla/mux"
@@ -13,7 +12,7 @@ type Server struct {
 	http.Server
 }
 
-func New_Server() *Server {
+func New_Server(port string) *Server {
 	s := &Server{}
 
 	// build router
@@ -22,7 +21,6 @@ func New_Server() *Server {
 	router.Use(util.LogToStderr)
 	s.Handler = router
 
-	port := os.Getenv("PORT")
 	s.Addr = ":" + port
 
 	// debug
