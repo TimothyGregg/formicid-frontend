@@ -4,7 +4,7 @@
 
 window.onload = init;
 
-const endpoint = "http://api.formicid.io"
+const endpoint = "https://api.formicid.io"
 
 function init(){
   // the code to be called when the dom has loaded
